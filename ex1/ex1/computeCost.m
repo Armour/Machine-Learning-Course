@@ -14,10 +14,10 @@ J = 0;
 %               You should set J to the cost.
 
 summ = 0;
-for i = 1:m
-    summ = summ + (X(i,:)*theta - y(i)) * (X(i,:)*theta - y(i));
-endfor 
-J = summ/(2*m);
+for i = 1 : m
+    summ = summ + (X(i, :) * theta - y(i)) ^ 2;
+endfor
+J = summ / (2 * m);
 
 % =========================================================================
 

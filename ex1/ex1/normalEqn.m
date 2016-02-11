@@ -10,12 +10,8 @@ theta = zeros(size(X, 2), 1);
 %               to linear regression and put the result in theta.
 %
 
-% ---------------------- Sample Solution ----------------------
+theta = pinv(X' * X) * X' * y; 
 
-theta = pinv(X'*X)*X'*y; 
-
-
-% -------------------------------------------------------------
 % ============================================================
 
 end
