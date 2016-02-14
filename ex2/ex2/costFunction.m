@@ -21,20 +21,19 @@ grad = zeros(size(theta));
 %
 
 summ = 0;
-for i = 1:m
-	summ = summ + (  ( (-1) * y(i,:) * log( sigmoid( X(i,:) * theta ) )) - ( (1 - y(i,:)) * log(1 - sigmoid( X(i,:) * theta ) ))  );
+for i = 1 : m
+    summ = summ + ((-y(i, :) * log(sigmoid(X(i, :) * theta)))
+                - ((1 - y(i, :)) * log(1 - sigmoid(X(i, :) * theta))));
 endfor
-J = summ/m;
+J = summ / m;
 
-for j = 1:size(theta)
-	summ = 0;
-	for i = 1:m
-		summ = summ + ( ( sigmoid( X(i,:) * theta ) - y(i,:) ) * X(i,j));
-	endfor
-	grad(j) = summ/m;
+for j = 1 : size(theta)
+    summ = 0;
+    for i = 1 : m
+        summ = summ + (sigmoid(X(i, :) * theta) - y(i, :)) * X(i, j);
+    endfor
+    grad(j) = summ / m;
 endfor
-
-
 
 % =============================================================
 
