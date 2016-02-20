@@ -30,11 +30,11 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
-for i = 1:m 
-	for j = 1:num_labels 
-		A(j) = sigmoid(X(i,:) * all_theta(j,:)');
-		[temp p(i)] =  max(A, [], 2); 
-	endfor
+for i = 1 : m
+    for j = 1 : num_labels
+        A(j) = sigmoid(X(i, :) * all_theta(j, :)');
+        [temp p(i)] = max(A, [], 2);
+    endfor
 endfor
 
 % =========================================================================

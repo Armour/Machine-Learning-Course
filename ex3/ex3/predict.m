@@ -9,10 +9,6 @@ num_labels = size(Theta2, 1);
 
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
-num = zeros(size(X, 1), 1);
-
-% Add ones to the X data matrix
-X = [ones(m, 1) X];
 
 % ====================== YOUR CODE HERE ======================
 % Instructions: Complete the following code to make predictions using
@@ -25,12 +21,15 @@ X = [ones(m, 1) X];
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
-for i = 1:m 
-	a1 = X(i,:)';
-	a2 = sigmoid(Theta1 * a1);
-	a2 = [ones(1,1); a2];
-	a3 = sigmoid(Theta2 * a2);
-	[num(i), p(i)] =  max(a3, [], 1); 
+num = zeros(size(X, 1), 1);
+
+X = [ones(m, 1) X];
+
+for i = 1 : m
+    a1 = X(i, :)';
+    a2 = [ones(1, 1); sigmoid(Theta1 * a1)];
+    a3 = sigmoid(Theta2 * a2);
+    [num(i), p(i)] = max(a3, [], 1);
 endfor
 
 % =========================================================================
