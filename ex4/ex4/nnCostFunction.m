@@ -67,12 +67,12 @@ X = [ones(m, 1) X];
 
 % Unregularized cost function
 for k = 1:m 
-	A_1_k = X(k,:)';
+	A_1_k = X(k, :)';
 	A_2_k = sigmoid(Theta1 * A_1_k);
 	A_2_k = [1; A_2_k];
 	A_3_k = sigmoid(Theta2 * A_2_k);	
 	Y_k = zeros(1, num_labels);
-	Y_k(y(k,:)) = 1;
+	Y_k(y(k, :)) = 1;
 	J = J - (Y_k * log(A_3_k)) - ((1 - Y_k) * log(1 - A_3_k));
 	
 	Delta_3_k = A_3_k - Y_k';
@@ -80,8 +80,8 @@ for k = 1:m
 	Delta_2_k = Delta_2_k(2:end);
 	Delta_2_k = Delta_2_k .* sigmoidGradient(Theta1 * A_1_k);
 	
-	Theta2_grad = Theta2_grad + Delta_3_k*(A_2_k');
-	Theta1_grad = Theta1_grad + Delta_2_k*(A_1_k');
+	Theta2_grad = Theta2_grad + Delta_3_k * A_2_k';
+	Theta1_grad = Theta1_grad + Delta_2_k * A_1_k';
 endfor
 
 J = J/m;
@@ -108,16 +108,16 @@ for i = 1: size(temp2, 1)
 	endfor
 endfor
 
-J = J + (lambda / (2*m)) * reg; 
-% You have been failed for many time here! be careful!!!!!
-Theta1_grad(:,2:end) = Theta1_grad(:,2:end) + (lambda / m) * Theta1(:,2:end);
-Theta2_grad(:,2:end) = Theta2_grad(:,2:end) + (lambda / m) * Theta2(:,2:end);  
+J = J + (lambda / (2 * m)) * reg; 
 
-% -------------------------------------------------------------
+% You have been failed for many time here! be careful!!!!!
+Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + (lambda / m) * Theta1(:, 2:end);
+Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + (lambda / m) * Theta2(:, 2:end);
 
 % =========================================================================
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
+
 
 end

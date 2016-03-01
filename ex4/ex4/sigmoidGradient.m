@@ -13,8 +13,7 @@ g = zeros(size(z));
 %               each value of z (z can be a matrix, vector or scalar).
 
 temp = 1.0 ./ (1.0 + exp(-z));
-
-g = temp.*(1-temp);
+g = temp .* (1 - temp);
 
 % =============================================================
 
