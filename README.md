@@ -1,2 +1,2 @@
-# Mechine-Learning-Course
+# Machine-Learning-Course
 The notes and homework of Andre Ng’s machine learning course on Coursera 
